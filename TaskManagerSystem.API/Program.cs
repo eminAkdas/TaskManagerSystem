@@ -44,7 +44,7 @@ builder.Services.AddCors(options =>
     // "AllowReactApp" adında özel bir VIP kuralı oluşturuyoruz
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.WithOrigins(allowedOrigins) // İzin verilen siteler artık dinamik
+        policy.AllowAnyOrigin() // Herkese İzin Ver (Render.com Environment Bug'ı İçin Kesin Çözüm)
               .AllowAnyHeader()  // Her türlü başlığa (Authorization vb.) izin ver
               .AllowAnyMethod(); // Her türlü metoda (GET, POST, PUT, DELETE) izin ver
     });
