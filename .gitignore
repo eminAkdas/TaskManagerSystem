@@ -1,0 +1,23 @@
+# .NET Core
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+
+# Frontend (React/Vite)
+node_modules/
+dist/
+.env.*
+!.env.example
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# MacOS
+.DS_Store
+
+# Local AppSettings - GİZLİ ŞİFRELER BURADA
+appsettings.Development.json
