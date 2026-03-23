@@ -4,7 +4,9 @@ import axios from 'axios';
 const api = axios.create({
     // Artık adresi sabit yazmıyoruz, Vite'in bizim için .env dosyasından okuduğu değişkeni kullanıyoruz!
     baseURL: import.meta.env.VITE_API_BASE_URL,
-    timeout: 10000,
+    // Render gibi ücretsiz bulut servisleri 15 dk boş kalınca uykuya dalar. İlk istekte uyanması 50 saniye sürebilir!
+    // Bu yüzden Frontend'in hemen pes etmemesi (Network Error / CORS hatası vermemesi) için bekleme süresini 60 saniyeye çıkardık.
+    timeout: 60000,
 });
 
 // ──────────────────────────────────────────────────────────────
