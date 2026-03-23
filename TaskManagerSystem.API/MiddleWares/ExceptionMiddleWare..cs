@@ -49,11 +49,10 @@ namespace TaskManagerSystem.API.Middlewares
                 var response = new ErrorDetails
                 {
                     StatusCode = context.Response.StatusCode,
-                    Message = "Sunucu tarafında beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+                    Message = ex.Message, // Hata ayıklamak için orijinal mesajı (ex.Message) dışarı veriyoruz!
                     
                     // İşin sırrı burası: Eğer kendi bilgisayarımızdaysak hatanın o uzun Stack Trace detaylarını ver.
-                    // Ama gerçek sunucudaysak (canlıdaysak) dışarıya NULL ver, sırrımızı koru!
-                    Details = _env.IsDevelopment() ? ex.StackTrace?.ToString() : null 
+                    Details = _env.IsDevelopment() ? ex.StackTrace?.ToString() : ex.ToString() 
                 };
 
                 // 4. Paketi JSON'a çevirip React'e (veya Swagger'a) geri fırlat!
